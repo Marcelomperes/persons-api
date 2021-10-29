@@ -8,10 +8,8 @@ import mmartins.personapi.mapper.PersonMapper;
 import mmartins.personapi.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,10 +28,7 @@ public class PersonService {
         Person personToSave = personMapper.toModel(personDTO);
 
         Person savedPerson = personRepository.save(personToSave);
-        return MessageResponseDTO
-                .builder()
-                .message("Created person with ID " + personToSave.getId())
-                .build();
+        return createMessageResponse(personToSave.getId(), "Created person with ID ");
     }
 
     public List<PersonDTO> listAll() {
@@ -48,10 +43,27 @@ public class PersonService {
         return personMapper.toDTO(person);
     }
 
+    public MessageResponseDTO updateById(Long id, PersonDTO personDTO) throws PersonNotFoundException {
+        verifyIfExistis(id);
+
+        Person personToUpdate = personMapper.toModel(personDTO);
+
+        Person updatedPerson = personRepository.save(personToUpdate);
+        return createMessageResponse(updatedPerson.getId(), "Updated person with ID ");
+
+    }
+
     public void delete(Long id) throws PersonNotFoundException {
         Person person = verifyIfExistis(id);
 
         personRepository.deleteById(id);
+    }
+
+    private MessageResponseDTO createMessageResponse(Long id, String message) {
+        return MessageResponseDTO
+                .builder()
+                .message(message + id)
+                .build();
     }
 
     private Person verifyIfExistis(Long id) throws PersonNotFoundException {
