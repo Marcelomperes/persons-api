@@ -10,7 +10,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PersonDTO {
+public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

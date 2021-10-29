@@ -1,2 +1,30 @@
-package mmartins.personapi.dto.request;public class PhoneDTO {
+package mmartins.personapi.dto.request;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import mmartins.personapi.enums.PhoneType;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class PhoneDTO {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Enumerated(EnumType.STRING)
+    private PhoneType type;
+
+    @NotEmpty
+    @Size(min = 13, max = 14)
+    private String number;
+
 }
