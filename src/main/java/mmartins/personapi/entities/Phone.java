@@ -1,4 +1,4 @@
-package mmartins.personapi.entity;
+package mmartins.personapi.entities;
 
 import lombok.*;
 import mmartins.personapi.enums.PhoneType;

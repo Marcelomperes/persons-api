@@ -3,7 +3,7 @@ package mmartins.personapi.service;
 import lombok.AllArgsConstructor;
 import mmartins.personapi.dto.MessageResponseDTO;
 import mmartins.personapi.dto.request.PersonDTO;
-import mmartins.personapi.entity.Person;
+import mmartins.personapi.entities.Person;
 import mmartins.personapi.exception.PersonNotFoundException;
 import mmartins.personapi.mapper.PersonMapper;
 import mmartins.personapi.repository.PersonRepository;
@@ -21,7 +21,7 @@ public class PersonService {
 
     private final PersonMapper personMapper = PersonMapper.INSTANCE;
 
-    public MessageResponseDTO createPerson(PersonDTO personDTO) {
+    public MessageResponseDTO create(PersonDTO personDTO) {
         Person personToSave = personMapper.toModel(personDTO);
 
         Person savedPerson = personRepository.save(personToSave);

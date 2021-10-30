@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import mmartins.personapi.entity.Phone;
+import mmartins.personapi.entities.Phone;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
@@ -41,6 +41,5 @@ public class PersonDTO {
 
     @Valid
     @NotEmpty
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    private List<Phone> phones;
+    private List<PhoneDTO> phones;
 }

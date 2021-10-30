@@ -1,7 +1,7 @@
 package mmartins.personapi.mapper;
 
 import mmartins.personapi.dto.request.PersonDTO;
-import mmartins.personapi.entity.Person;
+import mmartins.personapi.entities.Person;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
